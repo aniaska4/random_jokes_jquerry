@@ -1,11 +1,13 @@
 const API = "https://api.icndb.com/jokes/random";
 
-$(".js_getJoke").on("click", getJoke);
+$(".button").on("click", getJoke);
 
+//function responsible for matching words from joke
 function getJokeWordList(joke) {
   return joke.match(/[a-z]+/gi);
 }
 
+//function responsible for rendering joke
 function renderJoke(joke) {
   const $jokesArea = $(".jokesArea");
   const $joke = $("<h3 />", { text: joke });
@@ -17,6 +19,7 @@ function renderJoke(joke) {
   $jokesArea.append($joke, $jokeWordList.html(words));
 }
 
+//functions responsible for showing and hiding errors
 function showError(error) {
   $(".error").text(error).show();
 }
@@ -25,6 +28,8 @@ function hideError(error) {
   $(".error").text('').hide();
 }
 
+
+//function responsible for getting joke from API
 function getJoke() {
   hideError();
   
